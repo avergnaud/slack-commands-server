@@ -14,7 +14,10 @@ def user():
         form_dict = data.to_dict(flat=False)
         print(form_dict)
 
-        test_content = "commande bien reçue, payload : " + str(form_dict)
+        form_json = json.dumps(form_dict)
+        print(form_json)
+
+        test_content = "commande bien reçue, payload : " + str(form_json)
 
         return test_content, 200
 
