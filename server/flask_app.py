@@ -1,5 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -8,10 +9,13 @@ CORS(app)
 @app.route('/users', methods=['POST'])
 def user():
     if request.method == 'POST':
-        data = request.form  # a multidict containing POST data
+        data_b = request.data  # a multidict containing POST data
+        data = data_b.decode('UTF-8')
+        data_j = json.loads(data)
         print(data)
+        print(data_j)
 
-        test_content = "commande bien reçue"
+        test_content = "commande bien reçue, payload : " + data
 
         return test_content, 200
 
