@@ -1,6 +1,7 @@
 # slack-commands-server
 
-difficile : https://stackoverflow.com/questions/15231359/split-python-flask-app-into-multiple-files/22431887
+TODO
+http://polyglot.ninja/jwt-authentication-python-flask/
 
 ## starttup
 export LIST_SLACK_VERIF_TOKENS ="abc def"
