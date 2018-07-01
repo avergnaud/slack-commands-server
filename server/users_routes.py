@@ -24,8 +24,11 @@ def construct_blueprint(app, mongo):
         secret_token = user_dict["token"][0]
         if secret_token not in slack_verif_tokens:
             return "error", 403
+
+        lower_address = user_dict["text"][0].lower()
+        wallet_address_to_insert = [lower_address]
         # insert
-        user_id = mongo.db.users.insert({"slack_user_id": user_dict["user_id"], "wallet_address": user_dict["text"],
+        user_id = mongo.db.users.insert({"slack_user_id": user_dict["user_id"], "wallet_address": wallet_address_to_insert,
                                          "slack_user_name": user_dict["user_name"]})
         new_user = mongo.db.users.find_one({'_id': user_id})
         # réponse
@@ -36,7 +39,7 @@ def construct_blueprint(app, mongo):
     def get_user_by_wallet():
         # récupération du wallet
         wallet_address = request.args.get('wallet_address')
-        user = mongo.db.users.find_one({'wallet_address': wallet_address})
+        user = mongo.db.users.find_one({'wallet_address': wallet_address.lower()})
         nonce = randint(1000, 9999)
         mongo.db.users.update({"_id":user["_id"]}, {"$set": {"nonce": nonce}})
         if user is not None:

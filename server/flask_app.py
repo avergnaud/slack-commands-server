@@ -1,6 +1,7 @@
 from flask_cors import CORS
 from flask import Flask
-import server.users_route
+import server.users_routes
+import server.auth_routes
 from flask_pymongo import PyMongo
 
 
@@ -15,8 +16,11 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/slack-users-db'
 mongo = PyMongo(app)
 
 
-users_route = server.users_route.construct_blueprint(app, mongo)
+users_route = server.users_routes.construct_blueprint(app, mongo)
 app.register_blueprint(users_route)
+
+auth_routes = server.auth_routes.construct_blueprint(app, mongo)
+app.register_blueprint(auth_routes)
 
 
 def run():

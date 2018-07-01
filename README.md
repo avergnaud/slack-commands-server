@@ -1,12 +1,16 @@
 # slack-commands-server
 
-TODO
+requiert les variables d'environnement...
+LIST_SLACK_VERIF_TOKENS, JWT_SECRET
+
+TODO dans protected_route
 http://polyglot.ninja/jwt-authentication-python-flask/
 
 ## starttup
 export LIST_SLACK_VERIF_TOKENS ="abc def"
 
 curl -X POST -F 'text=0x123' -F 'user_id=U8XXXXXXN' -F 'user_name=mister-gros-bot' -F 'token=123' http://0.0.0.0:5001/users
+curl -X POST -F 'text=0xD2e42398E63A9C638444087B3d1E76c3Cf1508FA' -F 'user_id=U8XXXXXXN' -F 'user_name=mister-gros-bot' -F 'token=123' http://0.0.0.0:5001/users
 
 http://localhost:5001/users?wallet_address=0x123
 
