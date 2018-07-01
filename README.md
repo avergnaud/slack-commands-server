@@ -23,3 +23,8 @@ https://allstack.fr/slack-commands-server/users?wallet_address=0x456
     
 16^40 adresses = 2^160 = 1461501637330902918203684832716283019655932542976
 
+# lecture
+
+https://medium.com/vandium-software/5-easy-steps-to-understanding-json-web-tokens-jwt-1164c0adfcec
+http://polyglot.ninja/understanding-jwt-json-web-tokens/
+http://polyglot.ninja/jwt-authentication-python-flask/
