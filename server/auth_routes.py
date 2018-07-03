@@ -31,6 +31,7 @@ def construct_blueprint(app, mongo):
         if status:
             jwt_payload = {
                 "address": claimed_address,
+                "slack_user_name": user["slack_user_name"],
                 "exp": datetime.datetime.utcnow() + datetime.timedelta(days=2)
             }
             token = jwt.encode(payload=jwt_payload, key=SECRET_KEY)

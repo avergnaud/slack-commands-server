@@ -40,9 +40,9 @@ def construct_blueprint(app, mongo):
         # récupération du wallet
         wallet_address = request.args.get('wallet_address')
         user = mongo.db.users.find_one({'wallet_address': wallet_address.lower()})
-        nonce = randint(1000, 9999)
-        mongo.db.users.update({"_id":user["_id"]}, {"$set": {"nonce": nonce}})
         if user is not None:
+            nonce = randint(1000, 9999)
+            mongo.db.users.update({"_id":user["_id"]}, {"$set": {"nonce": nonce}})
             return json.dumps({"nonce": nonce, "publicAddress": user["wallet_address"][0]}), 200
         else:
             return "error", 403
