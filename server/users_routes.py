@@ -3,12 +3,13 @@ from bson import json_util
 from flask import request, Blueprint
 import os
 from random import randint
-
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 # conf slack
-if not os.environ.get("LIST_SLACK_VERIF_TOKENS"):
+if not os.getenv("LIST_SLACK_VERIF_TOKENS"):
     raise Exception('LIST_SLACK_VERIF_TOKENS environment variable not set')
-slack_verif_tokens = [i for i in os.environ.get("LIST_SLACK_VERIF_TOKENS").split(" ")]
+slack_verif_tokens = [i for i in os.getenv("LIST_SLACK_VERIF_TOKENS").split(" ")]
 
 
 def construct_blueprint(app, mongo):
