@@ -5,10 +5,13 @@ import jwt
 import datetime
 import os
 import json
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
-if not os.environ.get("JWT_SECRET"):
+
+if not os.getenv("JWT_SECRET"):
     raise Exception('JWT_SECRET environment variable not set')
-SECRET_KEY = os.environ.get("JWT_SECRET")
+SECRET_KEY = os.getenv("JWT_SECRET")
 
 def construct_blueprint(app, mongo):
 
